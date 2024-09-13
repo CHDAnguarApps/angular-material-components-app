@@ -1,0 +1,30 @@
+
+<section>
+  <div *ngIf="!showForm" class="example-button-row">
+    <button mat-raised-button (click)="showForm=true">Click to show Simple Autocomplete Form</button>
+<!--     <button mat-flat-button disabled (click)="showForm=true">Disabled</button> -->
+<!--     <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a> -->
+  </div>
+</section>
+
+<div *ngIf="showForm">
+<form class="example-form">
+<mat-form-field class="example-full-width" [floatLabel]="'always'">
+  <mat-label>Number</mat-label>
+  <!-- #docregion input -->
+  <input
+    type="text"
+    placeholder="Pick one"
+    aria-label="Number"
+    matInput
+    [formControl]="myControl"
+    [matAutocomplete]="auto"
+   />    
+   <mat-autocomplete #auto="matAutocomplete">
+       <mat-option *ngFor="let option of options" [value]="option">
+         {{option}}
+        </mat-option>
+   </mat-autocomplete>      
+</mat-form-field>
+</form>
+</div>
